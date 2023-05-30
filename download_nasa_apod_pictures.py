@@ -32,10 +32,7 @@ def main():
     args = parser.parse_args()
     args_count = args.count
     args_path = args.path
-    if args_path == "all_images":
-        Path("all_images").mkdir(parents=True, exist_ok=True)  
-    else:
-        Path(args_path).mkdir(parents=True, exist_ok=True)
+    Path(args_path).mkdir(parents=True, exist_ok=True)
     try:
         fetch_nasa_apod_pictures(args_path, args_count, nasa_token)    
     except (requests.exceptions.HTTPError, requests.exceptions.JSONDecodeError):
