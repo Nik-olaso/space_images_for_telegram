@@ -23,10 +23,7 @@ def main():
     args = parser.parse_args()
     launch_id = args.id
     args_path = args.path    
-    if args_path == "all_images":
-        Path("all_images").mkdir(parents=True, exist_ok=True)  
-    else:
-        Path(args_path).mkdir(parents=True, exist_ok=True)
+    Path(args_path).mkdir(parents=True, exist_ok=True)
     try:
         fetch_spacex_launches(launch_id, args_path)
     except (requests.exceptions.HTTPError, requests.exceptions.JSONDecodeError):
