@@ -33,10 +33,7 @@ def main():
     parser.add_argument("--path", default="all_images", help="в какую папку загружать картинки")    
     args = parser.parse_args()
     args_path = args.path
-    if args_path == "all_images":
-        Path("all_images").mkdir(parents=True, exist_ok=True)  
-    else:
-        Path(args_path).mkdir(parents=True, exist_ok=True)  
+    Path(args_path).mkdir(parents=True, exist_ok=True)  
     try:
         fetch_nasa_epic_pictures(args_path, nasa_token)    
     except (requests.exceptions.HTTPError, requests.exceptions.JSONDecodeError):
